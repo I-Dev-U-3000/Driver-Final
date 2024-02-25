@@ -27,24 +27,26 @@ import tw from "twrnc";
 
 // const { colorScheme, toggleColorScheme } = useColorScheme();
 const Drawer = createDrawerNavigator();
-function HomeScreen({ route }) {
-  // const { message } = route.params;
+function HomeScreen({route}) {
+  const {message} = route.params;
   // console.log(message);
-  return (
-    <Drawer.Navigator
-      initialRouteName="First"
-      screenOptions={{
-        drawerStyle: {
-          backgroundColor: "#FFF",
-          width: 250,
-        },
-        headerStyle: {
-          backgroundColor: "#fff",
-        },
+  return ( 
+    <Drawer.Navigator initialRouteName="Home"
+    screenOptions={{
+      drawerStyle:{
+        backgroundColor: "#FFF",
+        width: 250,
+      },
+      headerStyle:{
+        backgroundColor:"#fff"
+      },
+     
+  
+      drawerLabelStyle:{
+        color:"#111",
+      }
 
-        drawerLabelStyle: {
-          color: "#111",
-        },
+
       }}
 
       // drawerContent={
@@ -90,12 +92,27 @@ function HomeScreen({ route }) {
         }}
       />
 
-      <Drawer.Screen
-        name="Profile"
-        component={ProfileScreen}
+<Drawer.Screen
+        name="home"
+        component={Home}
+        initialParams={{ message: message }} // Pass the message prop to the Home component
         options={{
-          drawerLabel: "သင့်ပရိုဖိုင်",
-          title: "သင့်ပရိုဖိုင်",
+          drawerLabel: 'Home',
+          title: "Home",
+          drawerIcon: () => (
+            <Ionicons name="home" size={20} color="black" />
+          )
+        }}
+      />
+
+
+
+    <Drawer.Screen
+      name="Profile"
+      component={ProfileScreen}
+      initialParams={{ message: message }}
+      options={{ drawerLabel: 'Profile',
+      title: "Profile",
           drawerIcon: () => (
             <FontAwesome name="user-circle-o" size={20} color="black" />
           ),

@@ -20,7 +20,9 @@ const logoImg = require("../assets/images/sign.png");
 
 const tukLogo = require("../assets/images/login.png");
 
-export default function ProfileScreen() {
+export default function ProfileScreen({route}) {
+const {message} =route.params;
+
   const navigation = useNavigation();
   return (
     <ScrollView>
@@ -36,7 +38,7 @@ export default function ProfileScreen() {
                 <Text
                   style={{ fontSize: 18, color: "white", fontWeight: "bold" }}
                 >
-                  U Tun
+                  {message.name}
                 </Text>
               </View>
             </View>
@@ -52,7 +54,7 @@ export default function ProfileScreen() {
               <Text
                 style={tw`p-1 bg-white text-gray-700 rounded-2xl ml-23 mr-3 mb-3`}
               >
-                U Tun Tun
+                {message.name}
               </Text>
             </View>
             <Svg height="20" width="300">
@@ -74,7 +76,7 @@ export default function ProfileScreen() {
               <Text
                 style={tw`p-1 bg-white text-gray-700 rounded-2xl ml-17 mr-3 mb-3`}
               >
-                09423718997
+                {message.phoneNumber}
               </Text>
             </View>
             <Svg height="20" width="300">

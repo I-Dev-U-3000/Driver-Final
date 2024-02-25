@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useRef, useState } from 'react';
 import {
   StyleSheet,
@@ -11,7 +12,35 @@ import * as Animatable from 'react-native-animatable';
 export const screenWidth = Dimensions.get('window').width;
 let componentWidth = screenWidth;
 
-const StopSartbtn = props => {
+const StopSartbtn = ({driverLocation,userDatas}) => {
+
+  const [driverLocationId, setDriverLocationId] = useState(null);
+
+
+  const createDriverdata = async (driverProfile) => {
+    try {
+      const { data } = await axios.post("http://192.168.1.106:3000/driverLocation", driverProfile);
+      console.log("Data posted successfully:", data);
+      const newDriverLocationId =data._id; // Assuming "_id" is the field for the unique identifier
+      setDriverLocationId(newDriverLocationId); // Store the ID in your component state
+    
+    } catch (error) {
+      console.error("Error posting data:", error);
+    }
+  };
+  
+
+
+
+  const deleteDriverData = async () => {
+    try {
+      const response = await axios.delete(`http://192.168.1.106:3000/driverLocation/${driverLocationId}`);
+      console.log('Data deleted successfully');
+    } catch (error) {
+      console.error('Error deleting data:', error);
+    }
+  };
+
   const [activeIndex, setActiveIndex] = useState(0);
   const updateIndex = () => {
     if (activeIndex === 0) {
@@ -37,7 +66,16 @@ const StopSartbtn = props => {
         translateX: componentWidth / 2 - 5,
       },
     })
+
+    const {name,phoneNumber,password,licenseNo,NRC,address} = userDatas;
+    const latitude = driverLocation.latitude;
+    const longitude = driverLocation.longitude;
+    const driverProfile={name,phoneNumber,latitude,longitude,licenseNo}
+    console.log(driverProfile);
+    createDriverdata(driverProfile);
     console.log("I am start");
+  // console.log(driverLocation);
+
 };
 
     const slideLeft = () =>{ 
@@ -53,19 +91,22 @@ const StopSartbtn = props => {
         },
         })
     console.log("I am stop");
+
+    deleteDriverData();
+
     };
 
   return (
     <TouchableWithoutFeedback onPress={updateIndex}>
       <View
-        style={styles.backgroundSwitch}
+        style={btnstyles.backgroundSwitch}
         onLayout={event => {
           componentWidth = event.nativeEvent.layout.width;
         }}
       >
         <Animatable.View
           duration={500}
-          style={styles.buttonSwitch}
+          style={btnstyles.buttonSwitch}
           ref={handleViewRef}
         />
         <View
@@ -74,15 +115,15 @@ const StopSartbtn = props => {
             justifyContent: 'space-between',
           }}
         >
-          <Text style={[styles.textOption]}>ခရီးရှိနေသည်</Text>
-          <Text style={[styles.textOption]}>ခရီးမရှိပါ</Text>
+          <Text style={[btnstyles.textOption]}>ခရီးစဉ်ရှိသည်</Text>
+          <Text style={[btnstyles.textOption]}>ခရီးစဉ်ရှာဖွေမည်</Text>
         </View>
       </View>
     </TouchableWithoutFeedback>
   );
 };
 
-const styles = StyleSheet.create({
+const btnstyles = StyleSheet.create({
   backgroundSwitch: {
     backgroundColor: 'orange',
     height: 50,

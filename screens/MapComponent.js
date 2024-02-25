@@ -4,7 +4,7 @@ import MapView, { Marker } from "react-native-maps";
 import * as Location from "expo-location";
 import StopSartbtn from "./StopSartbtn";
 
-const MapComponent = () => {
+const MapComponent = ({userData}) => {
   const [location, setLocation] = useState(null);
 
   useEffect(() => {
@@ -16,6 +16,9 @@ const MapComponent = () => {
       }
 
       const currentLocation = await Location.getCurrentPositionAsync({});
+    // console.log(currentLocation.coords.latitude, currentLocation.coords.longitude);
+    // console.log(location);
+
       setLocation(currentLocation.coords);
     })();
   }, []);
@@ -37,11 +40,11 @@ const MapComponent = () => {
               latitude: location.latitude,
               longitude: location.longitude,
             }}
-            title="You are here"
+            title="you are here"
           />
         </MapView>
       )}
-      <StopSartbtn/>
+      <StopSartbtn driverLocation= {location} userDatas={userData}/>
     </View>
   );
 };

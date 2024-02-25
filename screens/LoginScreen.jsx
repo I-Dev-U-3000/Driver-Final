@@ -45,53 +45,34 @@ export default function LoginScreen() {
 
   const [errorMessage, setErrorMessage] = useState(null);
   const sendtoBackend = () => {
-    if (fdata.phnumber === "" || fdata.password === "" || fdata.name === "") {
+    if (fdata.phnumber === "" || fdata.password === "") {
       setErrorMessage("All fields are required");
       return;
     }
 
     let found = false;
     contact.forEach((contact) => {
-      console.log(contact);
-      if (
-        contact.name === fdata.name &&
-        contact.phoneNumber === fdata.phnumber &&
-        contact.password === fdata.password
-      ) {
+      if (contact.phoneNumber === fdata.phnumber && contact.password === fdata.password) {
         found = true;
+        // Assuming you want to retrieve user-specific data and navigate to the home screen on successful login
+        console.log("Login Successful"); 
+        navigation.navigate("home", { message: contact }); // Passing the user data to the home screen
       }
     });
-
-    if (found) {
-      // Logic for successful login
-      //   const messageLines = ['Login Successful'];
-      //   Alert.alert(
-      //     'Login',
-      //     messageLines.join('\n'),
-      //     [
-      //       {
-      //         text: 'Ok',
-      //         onPress: () => HomeScreen(), // Call HomeScreen function
-      //       }
-      //     ]
-      //   );
-
-      console.log("Login Successful");
-      navigation.navigate("home", { message: contact });
-    } else {
-      setErrorMessage("Invalid User name and password");
+  
+    if (!found) {
+      setErrorMessage("Invalid phone number or password");
     }
   };
-
+  
+  
   return (
-    <ScrollView>
-      <View style={tw`flex-1 bg-orange-400`}>
-        <SafeAreaView style={tw`flex`}>
-          <View style={tw`flex-row justify-start`}>
-            <TouchableOpacity
-              style={tw`bg-white p-2 rounded-tr-2xl rounded-bl-2xl ml-4 mt-2`}
-              onPress={() => navigation.goBack()}
-            >
+   <ScrollView>
+    <View style={tw`flex-1 bg-orange-400`}>
+    <SafeAreaView style={tw`flex`}>
+        <View style={tw`flex-row justify-start`}>
+            <TouchableOpacity style={tw`bg-white p-2 rounded-tr-2xl rounded-bl-2xl ml-4 mt-2`} onPress={() => navigation.goBack()}>
+              
               <ArrowLeftIcon size="20" color="orange" />
             </TouchableOpacity>
           </View>
