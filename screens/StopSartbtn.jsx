@@ -74,8 +74,8 @@ const StopSartbtn = props => {
             justifyContent: 'space-between',
           }}
         >
-          <Text style={[styles.textOption]}>Stop</Text>
-          <Text style={[styles.textOption]}>Start</Text>
+          <Text style={[styles.textOption]}>ခရီးရှိနေသည်</Text>
+          <Text style={[styles.textOption]}>ခရီးမရှိပါ</Text>
         </View>
       </View>
     </TouchableWithoutFeedback>

@@ -16,7 +16,7 @@ import { TextInput, underlineColorAndroid } from "react-native";
 import Entypo from "react-native-vector-icons/Entypo";
 import { FontAwesome } from "@expo/vector-icons";
 
-const logoImg = require("../assets/images/bg.jpg");
+const logoImg = require("../assets/images/sign.png");
 
 const tukLogo = require("../assets/images/login.png");
 
@@ -45,7 +45,7 @@ export default function ProfileScreen() {
         <View style={tw`flex-1 px-8 pt-8 mt-15 bg-white rounded-t-10`}>
           <View style={tw`flex-1 justify-start mb-80`}>
             <View style={tw`flex-row`}>
-              <Text style={tw`text-gray-700 ml-5 text-lg`}>Name</Text>
+              <Text style={tw`text-gray-700 ml-5 text-sm`}>အမည်</Text>
               {/* <Svg height="5" width="100">
                 <Line x1="0" y1="0" x2="300" y2="0" stroke="black" strokeWidth="2" />
             </Svg> */}
@@ -67,12 +67,12 @@ export default function ProfileScreen() {
             </Svg>
 
             <View style={tw`flex-row`}>
-              <Text style={tw`text-gray-700 ml-5 text-lg`}>Phone Number</Text>
+              <Text style={tw`text-gray-700 ml-5 text-sm`}>ဖုန်းနံပါတ်</Text>
               {/* <Svg height="5" width="100">
                 <Line x1="0" y1="0" x2="300" y2="0" stroke="black" strokeWidth="2" />
             </Svg> */}
               <Text
-                style={tw`p-1 bg-white text-gray-700 rounded-2xl ml-8 mr-3 mb-3`}
+                style={tw`p-1 bg-white text-gray-700 rounded-2xl ml-17 mr-3 mb-3`}
               >
                 09423718997
               </Text>
@@ -89,12 +89,12 @@ export default function ProfileScreen() {
             </Svg>
 
             <View style={tw`flex-row`}>
-              <Text style={tw`text-gray-700 ml-5 text-lg`}>NRC</Text>
+              <Text style={tw`text-gray-700 ml-5 text-sm`}>မှတ်ပုံတင်နံပါတ်</Text>
               {/* <Svg height="5" width="100">
                 <Line x1="0" y1="0" x2="300" y2="0" stroke="black" strokeWidth="2" />
             </Svg> */}
               <Text
-                style={tw`p-1 bg-white text-gray-700 rounded-2xl ml-26 mr-3 mb-3`}
+                style={tw`p-1 bg-white text-gray-700 rounded-2xl ml-7 mr-3 mb-3`}
               >
                 7/PaMaNa(N)238979
               </Text>
@@ -111,7 +111,7 @@ export default function ProfileScreen() {
             </Svg>
 
             <View style={tw`flex-row`}>
-              <Text style={tw`text-gray-700 ml-5 text-lg`}>Driver license</Text>
+              <Text style={tw`text-gray-700 ml-5 text-sm`}>လိုင်စင်အမှတ်</Text>
               {/* <Svg height="5" width="100">
                 <Line x1="0" y1="0" x2="300" y2="0" stroke="black" strokeWidth="2" />
             </Svg> */}
@@ -133,14 +133,14 @@ export default function ProfileScreen() {
             </Svg>
 
             <View style={tw`flex-row`}>
-              <Text style={tw`text-gray-700 ml-5 text-lg`}>
-                TukTuk Plate No.
+              <Text style={tw`text-gray-700 ml-5 text-sm`}>
+                အိုးဝေနံပါတ်
               </Text>
               {/* <Svg height="5" width="100">
                 <Line x1="0" y1="0" x2="300" y2="0" stroke="black" strokeWidth="2" />
             </Svg> */}
               <Text
-                style={tw`p-1 bg-white text-gray-700 rounded-2xl ml-5 mr-3 mb-3`}
+                style={tw`p-1 bg-white text-gray-700 rounded-2xl ml-14 mr-3 mb-3`}
               >
                 11
               </Text>
@@ -151,7 +151,7 @@ export default function ProfileScreen() {
               onPress={() => navigation.navigate("helpcenter")}
             >
               <Text style={tw`text-xl text-center text-white text-base`}>
-                if you want to update somethings, contact us
+                သင့်အချက်အလက်ကိုပြောင်းလဲရန် ဆက်သွယ်ပါ
               </Text>
             </TouchableOpacity>
           </View>

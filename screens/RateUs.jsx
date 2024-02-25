@@ -86,9 +86,9 @@ export default function RateusScreen() {
       <View style={tw`flex-1 bg-white min-h-full`}>
         <View style={tw`flex-1 justify-center items-center mt-5`}>
           <Text
-            style={tw`text-orange-500 font-bold text-3xl tracking-wide leading-normal`}
+            style={tw`text-orange-500 font-bold text-2xl tracking-wide leading-normal`}
           >
-            App Feedback
+            App အတွက်အကြုံပြုစာ
           </Text>
         </View>
         <View style={tw`flex-1 px-8 pt-8 bg-white rounded-t-10`}>
@@ -98,35 +98,34 @@ export default function RateusScreen() {
             </Text>
           ) : null}
           <View style={tw`form space-y-2`}>
-            <Text style={tw`text-gray-700 ml-4 mb-3`}>Name</Text>
+            <Text style={tw`text-gray-700 ml-4 mb-3`}>အမည်</Text>
             <TextInput
               style={tw`p-4 bg-gray-100 text-gray-700 rounded-2xl mb-5`}
               onChangeText={(text) => setName(text)}
               value={name}
-              placeholder="Enter your name"
+              placeholder="အမည်ရိုက်ထည့်ပါ"
             />
-            <Text style={tw`text-gray-700 ml-4 mb-3`}>Feedback</Text>
+            <Text style={tw`text-gray-700 ml-4 mb-3`}>အကြံပြုစာ</Text>
             <TextInput
               style={tw`p-4 bg-gray-100 text-gray-700 rounded-2xl mb-5 min-h-24`}
               onChangeText={(text) => setFeedback(text)}
               value={feedback}
-              placeholder="Please let us know Your Feedback "
+              placeholder="သင့်ရဲ့အကြံပြုစာရေးထည့်ပါ"
             />
             <Text style={tw`text-gray-700 ml-4 mb-3`}>
-              Suggestion for improvement
+              တိုးတက်မှုအတွက် အကြံပြုချက်
             </Text>
             <TextInput
               style={tw`p-4 bg-gray-100 text-gray-700 rounded-2xl mb-5 min-h-24`}
               onChangeText={(text) => setSuggestion(text)}
               value={suggestion}
-              placeholder="Please give me some suggestions"
+              placeholder="ကျေးဇူးပြု၍ကျွန်ုပ်ကိုအကြံပြုချက်အချို့ပေးပါ"
             />
             <Text style={tw`text-gray-700 ml-4 mb-3`}>
-              How did you hear this App
+              ဒီ App ကို ဘယ်လိုသိခဲ့တာလဲ။
             </Text>
             <CheckBox
               style={tw`text-gray-700 ml-4 mb-3`}
-
               isChecked={isChecked.socialmedia}
               onClick={() => {
                 setIsChecked({
@@ -135,7 +134,7 @@ export default function RateusScreen() {
                 });
                 setCheckbox1(!checkbox1); // Update checkbox state
               }}
-              rightText="Social Media"
+              rightText="လူမှုမီဒီယာများမှတဆင့်"
               rightTextStyle={{
                 color: isChecked.socialmedia ? "green" : "black",
               }}
@@ -152,7 +151,7 @@ export default function RateusScreen() {
                 setIsChecked({ ...isChecked, friends: !isChecked.friends });
                 setCheckbox2(!checkbox2);
               }}
-              rightText="Friends"
+              rightText="သူငယ်ချင်းများမှတဆင့်"
               //  value={checkbox2} onValueChange={setCheckbox2}
               rightTextStyle={{ color: isChecked.friends ? "green" : "black" }}
               checkedCheckBoxColor="green"
@@ -169,7 +168,7 @@ export default function RateusScreen() {
                 });
                 setCheckbox3(!checkbox3);
               }}
-              rightText="Search Engine(e.g Google)"
+              rightText="ရှာဖွေမှုများမှတဆင့်(ဥပမာ-Google)"
               //  value={checkbox3} onValueChange={setCheckbox3}
               rightTextStyle={{
                 color: isChecked.searchengine ? "green" : "black",
@@ -185,14 +184,14 @@ export default function RateusScreen() {
                 setIsChecked({ ...isChecked, other: !isChecked.other });
                 setCheckbox4(!checkbox4);
               }}
-              rightText="Other"
+              rightText="အခြားအရာများမှတဆင့်..."
               //  value={checkbox4} onValueChange={setCheckbox4}
               rightTextStyle={{ color: isChecked.other ? "green" : "black" }}
               checkedCheckBoxColor="green"
               uncheckedCheckBoxColor="red"
             />
 
-            <View >
+            <View>
               <TouchableOpacity
                 style={tw`py-3 rounded-full bg-orange-400`}
                 onPress={() => {
@@ -200,12 +199,11 @@ export default function RateusScreen() {
                 }}
               >
                 <Text
-                  style={tw`font-xl font-bold text-center text-white text-base`}
+                  style={tw`text-xl font-bold text-center text-white text-base`}
                 >
-                  Submit
+                  ပေးပို့မည်
                 </Text>
               </TouchableOpacity>
-             
             </View>
           </View>
         </View>
