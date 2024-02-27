@@ -1,6 +1,6 @@
 import { View, Text } from "react-native";
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer,DarkTheme,DefaultTheme } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import GetStarted from "../screens/GetStarted";
@@ -12,12 +12,30 @@ import AboutScreen from "../screens/About";
 import PrivacypolicyScreen from "../screens/PrivacyPolicy";
 import HelpCenterScreen from "../screens/HelpCenter";
 import RateusScreen from "../screens/RateUs";
+import Guide from "../screens/Guide";
+import theme from "../screens/theme/theme";
+import themeContext from "../screens/theme/themeContext";
+import { useState,useEffect } from 'react';
+import { EventRegister } from 'react-native-event-listeners';
+
 
 const Stack = createNativeStackNavigator();
 
 export default function AppNavigation() {
+  const [darkMode,setDarkMode]=useState(false)
+
+  useEffect(()=>{
+    const listener=EventRegister.addEventListener('ChangeTheme',(data)=>{
+      setDarkMode(data)
+    })
+    return ()=>{
+
+    EventRegister.removeAllListeners(listener)
+    }
+  },[darkMode])
   return (
-    <NavigationContainer>
+    <themeContext.Provider value={darkMode === true? theme.dark:theme.light}>
+      <NavigationContainer theme={darkMode === true? DarkTheme : DefaultTheme}>
       <Stack.Navigator initialRouteName="GetStarted">
         <Stack.Screen
           name="GetStarted"
@@ -64,7 +82,13 @@ export default function AppNavigation() {
           options={{ headerShown: false }}
           component={PrivacypolicyScreen}
         />
+        <Stack.Screen
+          name="Guide"
+          options={{ headerShown: false }}
+          component={Guide}
+        />
       </Stack.Navigator>
-    </NavigationContainer>
-  );
+      </NavigationContainer>
+        </themeContext.Provider>
+      );
 }

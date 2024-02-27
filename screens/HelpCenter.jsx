@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity } from "react-native";
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import tw from "twrnc";
 import { useNavigation } from "@react-navigation/native";
 import Ionicons from "@expo/vector-icons/Ionicons";
@@ -9,9 +9,15 @@ import { FontAwesome } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { canOpenURL, openURL } from "expo-linking";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { DarkTheme,DefaultTheme } from "@react-navigation/native";
+import { useEffect } from 'react';
+import theme from "./theme/theme";
+import themeContext from "./theme/themeContext";
 
 export default function HelpCenterScreen() {
   const navigation = useNavigation();
+  const theme=useContext(themeContext)
+  const [darkMode,setDarkMode]=useState(false)
 
   const [canOpenTelephone, setcanOpenTelephone] = useState(false);
   canOpenURL("tel:+959952631311").then((canOpen) =>
@@ -23,15 +29,17 @@ export default function HelpCenterScreen() {
     setcanOpenMail(canOpen)
   );
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{backgroundColor:theme.backgroundColor}}>
+    <View>
       <Text style={tw`p-3 ml-2 text-red-500`}>
         တစ်စုံတရာအဆင်မပြေကြောင်း သတင်းပို့လိုပါက
         အောက်ပါဆက်သွယ်ရန်အသေးစိတ်အချက်အလက်များကို
         အသုံးပြု၍ကျွန်ုပ်တို့ထံဆက်သွယ်ပါ။
       </Text>
 
+
       <View style={tw`flex-row p-5 items-center`}>
-        <Feather name="phone-call" size={22} color="black" />
+        <Feather name="phone-call" size={22} color="darkorange" />
         <TouchableOpacity
           style={tw`font-semibold  ml-5`}
           onPress={() => openURL("tel:+959952631311")}
@@ -45,8 +53,9 @@ export default function HelpCenterScreen() {
         </TouchableOpacity>
       </View>
 
+
       <View style={tw`flex-row p-5 items-center`}>
-        <FontAwesome5 name="telegram-plane" size={24} color="black" />
+        <FontAwesome5 name="telegram-plane" size={24} color="darkorange" />
         <TouchableOpacity
           style={tw`font-semibold  ml-5`}
           onPress={() => openURL("https://t.me/bibiHsu_28")}
@@ -57,8 +66,9 @@ export default function HelpCenterScreen() {
         </TouchableOpacity>
       </View>
 
+
       <View style={tw`flex-row p-5 items-center`}>
-        <FontAwesome name="facebook-f" size={24} color="black" />
+        <FontAwesome name="facebook-f" size={24} color="darkorange" />
         <TouchableOpacity
           style={tw`font-semibold  ml-5`}
           onPress={() =>
@@ -71,8 +81,9 @@ export default function HelpCenterScreen() {
         </TouchableOpacity>
       </View>
 
+
       <View style={tw`flex-row p-5 items-center`}>
-        <Feather name="mail" size={24} color="black" />
+        <Feather name="mail" size={24} color="darkorange" />
         <TouchableOpacity
           style={tw`font-semibold ml-5`}
           onPress={() => openURL("mailto:pyaepyae@gmail.com")}
@@ -83,14 +94,16 @@ export default function HelpCenterScreen() {
         </TouchableOpacity>
       </View>
 
+
       <View style={tw`flex-row p-5 items-center`}>
         <MaterialCommunityIcons
           name="office-building-marker"
           size={24}
-          color="black"
+          color="darkorange"
         />
-        <Text style={tw`ml-5`}>ကွန်ပျူတာတက္ကသိုလ် (ပြည်မြို့)</Text>
+        <Text style={[tw`ml-5`,{color:theme.color}]}>ကွန်ပျူတာတက္ကသိုလ် (ပြည်မြို့)</Text>
       </View>
+    </View>
     </SafeAreaView>
   );
 }

@@ -7,21 +7,29 @@ import {
   useWindowDimensions,
 } from "react-native";
 import { style } from "twrnc";
-//import Onboarding from "./Onboarding";
+import theme from "./theme/theme";
+import themeContext from "./theme/themeContext";
+import { useState , useContext } from "react";
+import { EvilIcons } from '@expo/vector-icons';
+import tw from 'twrnc';
+
 
 export default OnboardingItem = ({ item }) => {
   const { width } = useWindowDimensions();
+  const theme=useContext(themeContext)
+  const [darkMode,setDarkMode]=useState(false)
 
   return (
-    <View style={[styles.container, { width }]}>
+    <View style={[tw`flex-1`]}>
       <Image
         source={item.image}
         style={[styles.image, { width, resizeMode: "contain" }]}
       />
 
       <View style={{ flex: 0.3 }}>
-        <Text style={style.title}>{item.title}</Text>
-        <Text style={style.description}>{item.description}</Text>
+        <Text >{item.title}</Text>
+        <Text >{item.description}</Text>
+        {/* <EvilIcons name="arrow-right" size={60} color="darkorange" /> */}
       </View>
     </View>
   );
@@ -37,17 +45,17 @@ const styles = StyleSheet.create({
     flex: 0.7,
     justifyContent: "center",
   },
-  title: {
-    fontWeight: "800",
-    fontSize: 28,
-    marginBottom: 10,
-    color: "#493d8a",
-    textAlign: "center",
-  },
-  description: {
-    fontWeight: "300",
-    color: "#62656b",
-    textAlign: "center",
-    paddingHorizontal: 64,
-  },
+  // title: {
+  //   fontWeight: "800",
+  //   fontSize: 28,
+  //   marginBottom: 10,
+  //   color: "#493d8",
+  //   textAlign: "center",
+  // },
+  // description: {
+  //   fontWeight: "300",
+  //   color: "#62656",
+  //   textAlign: "center",
+  //   paddingHorizontal: 64,
+  // },
 });

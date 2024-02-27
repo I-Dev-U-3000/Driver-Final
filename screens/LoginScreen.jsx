@@ -1,15 +1,9 @@
-import {
-  View,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  Image,
-} from "react-native";
+import { View, ScrollView, Text, TouchableOpacity, Image } from "react-native";
 import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 import tw from "twrnc";
-import { ArrowLeftIcon } from "react-native-heroicons/solid";
+import { AntDesign } from '@expo/vector-icons';
 import { TextInput } from "react-native";
 import axios from "axios";
 //import Icon from 'react-native-vector-icons/Iconics';
@@ -52,36 +46,40 @@ export default function LoginScreen() {
 
     let found = false;
     contact.forEach((contact) => {
-      if (contact.phoneNumber === fdata.phnumber && contact.password === fdata.password) {
+      if (
+        contact.phoneNumber === fdata.phnumber &&
+        contact.password === fdata.password
+      ) {
         found = true;
         // Assuming you want to retrieve user-specific data and navigate to the home screen on successful login
-        console.log("Login Successful"); 
+        console.log("Login Successful");
         navigation.navigate("home", { message: contact }); // Passing the user data to the home screen
       }
     });
-  
+
     if (!found) {
       setErrorMessage("Invalid phone number or password");
     }
   };
-  
-  
+
   return (
-   <ScrollView>
-    <View style={tw`flex-1 bg-orange-400`}>
-    <SafeAreaView style={tw`flex`}>
-        <View style={tw`flex-row justify-start`}>
-            <TouchableOpacity style={tw`bg-white p-2 rounded-tr-2xl rounded-bl-2xl ml-4 mt-2`} onPress={() => navigation.goBack()}>
-              
-              <ArrowLeftIcon size="20" color="orange" />
-            </TouchableOpacity>
+    <ScrollView>
+      <View style={tw`flex-1 bg-orange-400`}>
+        <SafeAreaView style={tw`flex`}>
+          <View style={tw`flex-row justify-start`}>
+            <TouchableOpacity
+              style={tw`bg-orange-400 p-2 ml-4 mt-2`}
+              onPress={() => navigation.goBack()}
+            >
+          <AntDesign name="arrowleft" size={20} color="black" />        
+    </TouchableOpacity>
           </View>
           <View style={tw`flex-1 justify-center items-center mt-20`}>
             <Image source={tukLogo} style={{ width: 150, height: 150 }} />
             <Text
               style={tw`text-white font-bold text-4xl tracking-wide leading-normal`}
             >
-              တုတ်တုတ်{" "}
+              Tuk Tuk
             </Text>
           </View>
         </SafeAreaView>
@@ -91,7 +89,7 @@ export default function LoginScreen() {
               {errorMessage}
             </Text>
           ) : null}
-          <View style={tw`form space-y-2`}>
+          <View>
             <Text style={tw`text-gray-700 ml-4 mb-3`}>အသုံးပြုသူအမည်</Text>
 
             <TextInput
@@ -124,7 +122,7 @@ export default function LoginScreen() {
               }}
             >
               <Text
-                style={tw`font-xl font-bold text-center text-white text-base`}
+                style={tw`text-xl font-bold text-center text-white text-base`}
               >
                 အကောင့်ဝင်ပါ
               </Text>

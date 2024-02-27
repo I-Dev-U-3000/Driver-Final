@@ -7,7 +7,7 @@ import {
   useWindowDimensions,
 } from "react-native";
 
-export default Pagintor = ({ data, scrollx }) => {
+export default Pagintor = ({ data, scrollX }) => {
   const { width } = useWindowDimensions();
 
   return (
@@ -15,13 +15,13 @@ export default Pagintor = ({ data, scrollx }) => {
       {data.map((_, i) => {
         const inputRange = [(i - 1) * width, i * width, (i + 1) * width];
 
-        const dotWidth = scrollx.interpolate({
+        const dotWidth = scrollX.interpolate({
           inputRange,
           outputRange : [5,10,5],
           extrapolate : 'clamp',
         });
 
-        const opacity = scrollx.interpolate({
+        const opacity = scrollX.interpolate({
           inputRange,
           outputRange :[0.3,1,0.3],
           extrapolate : 'clamp',

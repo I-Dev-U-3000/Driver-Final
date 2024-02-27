@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import { View, StyleSheet } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import * as Location from "expo-location";
 import StopSartbtn from "./StopSartbtn";
+import theme from "./theme/theme";
+import themeContext from "./theme/themeContext";
 
 const MapComponent = ({userData}) => {
+  const theme=useContext(themeContext)
+  const [darkMode,setDarkMode]=useState(false)
   const [location, setLocation] = useState(null);
 
   useEffect(() => {

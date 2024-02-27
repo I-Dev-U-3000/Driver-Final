@@ -6,19 +6,26 @@ import {
   FlatList,
   StyleSheet,
   Animated,
-  ScrollView
+  ScrollView,
+  TouchableOpacity
 } from "react-native";
 import { useState, useRef,useContext } from "react";
+import { AntDesign } from '@expo/vector-icons';
 import themeContext from "./theme/themeContext";
+import { useNavigation } from "@react-navigation/native";
 import theme from "./theme/theme";
 import tw from 'twrnc';
+import { SafeAreaView } from "react-native-safe-area-context";
+
 
 import slides from "./slides";
 import OnboardingItem from "./OnboardingItem";
 //import { style } from "deprecated-react-native-prop-types/DeprecatedViewPropTypes";
 //import { ViewPropTypes } from "deprecated-react-native-prop-types";
 
-export default Onboarding = () => {
+export default GuideScreen = () => {
+
+  const navigation = useNavigation();
 
   const theme=useContext(themeContext)
 
@@ -38,21 +45,19 @@ export default Onboarding = () => {
 
   return (
     <ScrollView>
+    <SafeAreaView>
+    <View style={tw`flex-row justify-start`}>
+            <TouchableOpacity
+              style={tw`p-2 ml-4 mt-2`}
+              onPress={() => navigation.navigate('GetStarted')}
+            >
+          <AntDesign name="arrowleft" size={20} color="black" />        
+    </TouchableOpacity>
+          </View>
     <View style={styles.container}>
 
       <View style={[{flex : 3}]}>
-      <Text style={[tw`text-lg mt-1 mb-3 text-center`,{color:theme.color}]}>ပင်မစာမျက်နှာကိုဘယ်လိုအသုံးပြုမလဲ</Text>
-      <FlatList
-        data={slides}
-        renderItem={({ item }) => <OnboardingItem item={item} />}
-        horizontal
-        showsHorizontalScrollIndicator
-        pagingEnabled
-      />
-      </View>
-
-      <View style={[{flex : 3}]}>
-      <Text style={[tw`text-lg mt-5 mb-3 text-center`,{color:theme.color}]}>ရုံးကိုဘယ်လိုဆက်သွယ်မလဲ</Text>
+      <Text style={[tw`text-lg mt-15 mb-13 text-center`,{color:theme.color}]}>ဘယ်လို Log in လုပ်မလဲ</Text>
       <FlatList
         data={slides}
         renderItem={({ item }) => <OnboardingItem item={item} />}
@@ -63,6 +68,7 @@ export default Onboarding = () => {
       </View>
 
         </View>
+        </SafeAreaView>
         </ScrollView>
   );
 };
