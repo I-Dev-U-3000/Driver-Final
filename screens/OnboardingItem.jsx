@@ -27,9 +27,8 @@ export default OnboardingItem = ({ item }) => {
       />
 
       <View style={{ flex: 0.3 }}>
-        <Text >{item.title}</Text>
+        <Text style={{fontSize:20,textAlign: "center",marginTop:10,fontWeight:700}}>{item.title}</Text>
         <Text >{item.description}</Text>
-        {/* <EvilIcons name="arrow-right" size={60} color="darkorange" /> */}
       </View>
     </View>
   );
@@ -44,14 +43,20 @@ const styles = StyleSheet.create({
   image: {
     flex: 0.7,
     justifyContent: "center",
+    width:200,
+    height:500
   },
-  // title: {
-  //   fontWeight: "800",
-  //   fontSize: 28,
-  //   marginBottom: 10,
-  //   color: "#493d8",
-  //   textAlign: "center",
-  // },
+  title: {
+    fontWeight: "800",
+    fontSize: 38,
+    marginBottom: 10,
+    textAlign: "center",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop:10,
+    marginLeft:20,
+  },
+
   // description: {
   //   fontWeight: "300",
   //   color: "#62656",

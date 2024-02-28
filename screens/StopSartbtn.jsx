@@ -19,7 +19,7 @@ const StopSartbtn = ({driverLocation,userDatas}) => {
 
   const createDriverdata = async (driverProfile) => {
     try {
-      const { data } = await axios.post("http://192.168.100.39:3000/driverLocation", driverProfile);
+      const { data } = await axios.post("http://192.168.43.72:3000/driverLocation", driverProfile);
       console.log("Data posted successfully:", data);
       const newDriverLocationId =data._id; // Assuming "_id" is the field for the unique identifier
       setDriverLocationId(newDriverLocationId); // Store the ID in your component state
@@ -34,7 +34,7 @@ const StopSartbtn = ({driverLocation,userDatas}) => {
 
   const deleteDriverData = async () => {
     try {
-      const response = await axios.delete(`http://192.168.100.39:3000/driverLocation/${driverLocationId}`);
+      const response = await axios.delete(`http://192.168.43.72:3000/driverLocation/${driverLocationId}`);
       console.log('Data deleted successfully');
     } catch (error) {
       console.error('Error deleting data:', error);

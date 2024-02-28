@@ -37,7 +37,7 @@ export default function RateusScreen() {
   const createFeedback = async (feedbacks) => {
     try {
       const response = await axios.post(
-        "http://192.168.100.39:3000/feedback",
+        "http://192.168.43.72:3000/feedback",
         feedbacks
       );
       console.log("Feedback response:", response.data);
@@ -107,14 +107,14 @@ export default function RateusScreen() {
           <View>
             <Text style={[tw`text-gray-700 ml-4 mb-3`,{color:theme.color}]}>အမည်</Text>
             <TextInput
-              style={[tw`p-4 bg-gray-100 text-gray-700 rounded-2xl mb-5`,{color:theme.color}]}
+              style={[tw`p-4 bg-white text-gray-700 rounded-2xl mb-5`,{color:theme.color}]}
               onChangeText={(text) => setName(text)}
               value={name}
               placeholder="အမည်ရိုက်ထည့်ပါ"
             />
             <Text style={[tw`text-gray-700 ml-4 mb-3`,{color:theme.color}]}>အကြံပြုစာ</Text>
             <TextInput
-              style={[tw`p-4 bg-gray-100 text-gray-700 rounded-2xl mb-5 min-h-24`,{color:theme.color}]}
+              style={[tw`p-4 bg-white text-gray-700 rounded-2xl mb-5 min-h-24`,{color:theme.color}]}
               onChangeText={(text) => setFeedback(text)}
               value={feedback}
               placeholder="သင့်ရဲ့အကြံပြုစာရေးထည့်ပါ"
@@ -123,7 +123,7 @@ export default function RateusScreen() {
               တိုးတက်မှုအတွက် အကြံပြုချက်
             </Text>
             <TextInput
-              style={[tw`p-4 bg-gray-100 text-gray-700 rounded-2xl mb-5 min-h-24`,{color:theme.color}]}
+              style={[tw`p-4 bg-white text-gray-700 rounded-2xl mb-5 min-h-24`,{color:theme.color}]}
               onChangeText={(text) => setSuggestion(text)}
               value={suggestion}
               placeholder="ကျေးဇူးပြု၍ကျွန်ုပ်ကိုအကြံပြုချက်အချို့ပေးပါ"

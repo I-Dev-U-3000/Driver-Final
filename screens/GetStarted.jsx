@@ -98,7 +98,7 @@ export default function WelcomeScreen() {
               </Text>
               <View>
             <TouchableOpacity onPress={() => navigation.navigate('Guide')} sty>
-            <Text style={[tw`text-lg ml-1 text-blue-500 underline text-center mt-4`]}>Log in ဝင်နည်းကြည့်မည်</Text>
+            <Text style={[tw`text-lg ml-1 text-blue-500 underline text-center mt-4`]}>အကောင့်ဝင်နည်းလမ်းညွှန်</Text>
             </TouchableOpacity>
           </View>
             </View>

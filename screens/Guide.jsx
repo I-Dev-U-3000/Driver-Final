@@ -16,9 +16,7 @@ import { useNavigation } from "@react-navigation/native";
 import theme from "./theme/theme";
 import tw from 'twrnc';
 import { SafeAreaView } from "react-native-safe-area-context";
-
-
-import slides from "./slides";
+import loginslides from "./loginslides";
 import OnboardingItem from "./OnboardingItem";
 //import { style } from "deprecated-react-native-prop-types/DeprecatedViewPropTypes";
 //import { ViewPropTypes } from "deprecated-react-native-prop-types";
@@ -57,9 +55,9 @@ export default GuideScreen = () => {
     <View style={styles.container}>
 
       <View style={[{flex : 3}]}>
-      <Text style={[tw`text-lg mt-15 mb-13 text-center`,{color:theme.color}]}>ဘယ်လို Log in လုပ်မလဲ</Text>
+      <Text style={[tw`text-lg mb-13 text-center`,{color:theme.color}]}>ဘယ်လို Log in လုပ်မလဲ</Text>
       <FlatList
-        data={slides}
+        data={loginslides}
         renderItem={({ item }) => <OnboardingItem item={item} />}
         horizontal
         showsHorizontalScrollIndicator

@@ -2,29 +2,16 @@ export default [
 
   {
     id: "1",
-    title: "   ",
+    title: "Step 1",
     description: "  ",
-    image: require("../assets/images/DR1.jpg"),
+    image: require("../assets/images/mapImage/map1.png"),
   },
 
   {
     id: "2",
-    title: "  ",
+    title: "Step 2",
     description: "  ",
-    image: require("../assets/images/DR2.jpg"),
+    image: require("../assets/images/mapImage/map2.png"),
   },
 
-  {
-    id: "3",
-    title: "  ",
-    description: "  ",
-    image: require("../assets/images/DR3.jpg"),
-  },
-
-  {
-    id: "4",
-    title: "  ",
-    description: "   ",
-    image: require("../assets/images/DR4.jpg"),
-  },
 ];

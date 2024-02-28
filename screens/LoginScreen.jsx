@@ -14,7 +14,7 @@ export default function LoginScreen() {
   const [contact, setContact] = useState([]);
   const getContact = async () => {
     try {
-      const response = await axios.get("http://192.168.100.39:3000/drivers");
+      const response = await axios.get("http://192.168.43.72:3000/drivers");
       console.log(response.data.data); // Log the fetched data
       setContact(response.data.data);
     } catch (error) {
@@ -116,7 +116,7 @@ export default function LoginScreen() {
             />
 
             <TouchableOpacity
-              style={tw`py-3 rounded-full bg-orange-400`}
+              style={tw`py-3 rounded-full bg-orange-400 `}
               onPress={() => {
                 sendtoBackend();
               }}
